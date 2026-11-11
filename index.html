@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Expandable Search</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .search-container {
+            position: relative;
+            height: 60px;
+        }
+
+        .search-input {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            padding: 0 20px;
+            font-size: 18px;
+            color: transparent;
+              transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                        color 0.4s ease, 
+                        box-shadow 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+         .search-input:focus {
+            width: 320px;
+            color: #333;
+             padding: 0 70px 0 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        .search-input:focus::placeholder {
+            color: #aaa;
+        }
+
+        .search-icon-btn {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            pointer-events: none;
+            transition: background 0.4s ease, transform 0.4s ease;
+        }
+
+        .search-input:focus + .search-icon-btn {
+            background: #f0f0f0;
+            pointer-events: auto; 
+        }
+
+        .search-icon-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #555;
+            transition: fill 0.4s ease;
+        }
+
+        .search-input:focus + .search-icon-btn svg {
+            fill: #764ba2; 
+        }
+      
+        @media (max-width: 400px) {
+            .search-input:focus {
+                width: 85vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+         <input type="text" class="search-input" placeholder="Type to search...">
+        
+        <button class="search-icon-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 3a7.5 7.5 0 1 0 5.035 13.064l5.258 5.258 1.414-1.414-5.258-5.258A7.5 7.5 0 0 0 10.5 3zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+            </svg>
+        </button>
+    </div>
+
+</body>
+</html>
